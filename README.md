@@ -20,6 +20,8 @@ example:
 ## install
 `composer require nonerame/laravel-json-query-log --dev`
 
+will add in api group middleware
+
 ## usage
 
 add `DEBUG_QUERY_ENABLED=true` to `.env` 
