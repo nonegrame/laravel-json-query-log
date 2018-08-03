@@ -31,6 +31,7 @@
         "test": "./vendor/bin/phpunit tests"
     },
     "extra": {
+        "component": "package",
         "laravel": {
             "providers": [
                 "Nonegrame\\LaravelJsonQueryLog\\DatabaseQueryServiceProvider"
