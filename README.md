@@ -18,7 +18,7 @@ example:
 ```
 
 ## install
-
+`composer require nonerame/laravel-json-query-log --dev`
 
 ## usage
 
