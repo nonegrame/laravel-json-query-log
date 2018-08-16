@@ -29,8 +29,17 @@ class DatabaseQueryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $middles = config("queryLog.MIDDLE_APPEND");
         /** @var Router $router */
         $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('api', DatabaseQueryLogMiddleware::class);
+        if (is_string($middles)) {
+            $router->pushMiddlewareToGroup($middles, DatabaseQueryLogMiddleware::class);
+        }
+
+        if (is_array($middles)) {
+            foreach ($middles as $middle) {
+                $router->pushMiddlewareToGroup($middle, DatabaseQueryLogMiddleware::class);
+            }
+        }
     }
 }
