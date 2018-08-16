@@ -1,6 +1,6 @@
 <?php
 
-namespace Nonegrame\LaravelJsonQueryLog;
+namespace Nonegrame\LaravelJsonQueryLog\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +18,7 @@ class DatabaseQueryLogMiddleware
     public function handle($request, Closure $next)
     {
         // 沒開就不顯示 query log
-        if (!env('DEBUG_QUERY_ENABLED', false)) {
+        if (!config("queryLog.DEBUG_QUERY_ENABLED", false)) {
             $response = $next($request);
             return $response;
         }

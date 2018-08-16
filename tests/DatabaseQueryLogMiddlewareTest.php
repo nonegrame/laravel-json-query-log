@@ -5,7 +5,7 @@ namespace Nonegrame\LaravelJsonQueryLog\Test;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Nonegrame\LaravelJsonQueryLog\DatabaseQueryLogMiddleware;
+use Nonegrame\LaravelJsonQueryLog\Http\Middleware\DatabaseQueryLogMiddleware;
 
 class DatabaseQueryLogMiddlewareTest extends \Orchestra\Testbench\TestCase
 {
@@ -13,7 +13,7 @@ class DatabaseQueryLogMiddlewareTest extends \Orchestra\Testbench\TestCase
     public function test_handle_not_enable()
     {
         // arrange
-        putenv('DEBUG_QUERY_ENABLED=false');
+        config()->set("queryLog.DEBUG_QUERY_ENABLED", false);
         $middleware = $this->createPartialMock(DatabaseQueryLogMiddleware::class, []);
         $request = $this->app->make(Request::class);
         $closure = function () {
@@ -32,7 +32,7 @@ class DatabaseQueryLogMiddlewareTest extends \Orchestra\Testbench\TestCase
     public function test_handle_enable()
     {
         // arrange
-        putenv('DEBUG_QUERY_ENABLED=true');
+        config()->set("queryLog.DEBUG_QUERY_ENABLED", true);
         $middleware = $this->createPartialMock(DatabaseQueryLogMiddleware::class, []);
         $request = $this->app->make(Request::class);
         $closure = function () {
@@ -51,7 +51,7 @@ class DatabaseQueryLogMiddlewareTest extends \Orchestra\Testbench\TestCase
     public function test_handle_enable_response_not_json()
     {
         // arrange
-        putenv('DEBUG_QUERY_ENABLED=true');
+        config()->set("queryLog.DEBUG_QUERY_ENABLED", true);
         $middleware = $this->createPartialMock(DatabaseQueryLogMiddleware::class, []);
         $request = $this->app->make(Request::class);
         $closure = function () {
