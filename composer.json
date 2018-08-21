@@ -34,7 +34,7 @@
         "component": "package",
         "laravel": {
             "providers": [
-                "Nonegrame\\LaravelJsonQueryLog\\DatabaseQueryServiceProvider"
+                "Nonegrame\\LaravelJsonQueryLog\\Providers\\DatabaseQueryServiceProvider"
             ]
         }
     }
