@@ -20,10 +20,22 @@ example:
 ## install
 `composer require nonerame/laravel-json-query-log --dev`
 
-will add in api group middleware
+publish config
+
+```
+php artisan vendor:publish --provider="Nonegrame\LaravelJsonQueryLog\Providers\DatabaseQueryServiceProvider"
+```
+
 
 ## usage
 
-add `DEBUG_QUERY_ENABLED=true` to `.env` 
+add `DEBUG_QUERY_ENABLED=true` to `.env`
 
-*default DEBUG_QUERY_ENABLED=false*
+or
+
+editor config/queryLog.php
+
+and run
+```
+php artisan config:clear
+```
